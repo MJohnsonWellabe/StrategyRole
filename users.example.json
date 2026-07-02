@@ -1,0 +1,7 @@
+{
+  "_comment": "Copy this file to users.json and fill in real people. users.json is gitignored — never commit it. To add a next-level leader: add a row here, create content/panels/<username>.html with their personalized content, then run `node tools/build.mjs`. Set \"admin\": true on any user who should see every panel.",
+  "users": [
+    { "u": "firstname", "p": "password", "first": "Firstname", "name": "Firstname Lastname", "title": "Title — Scope", "panel": "firstname.html" },
+    { "u": "owner",     "p": "password", "first": "Owner",     "name": "Owner Name",         "title": "Site Owner",    "panel": "owner.html", "admin": true }
+  ]
+}

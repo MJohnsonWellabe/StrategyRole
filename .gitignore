@@ -1,0 +1,5 @@
+# Confidential plaintext — must never land in this public repo.
+# Recover from a built index.html with: node tools/export.mjs <admin-user> <admin-pass>
+content/
+users.json
+source-materials/

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>%%TITLE%%</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+%%CSS%%
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-card">
+    <p class="mark">The Huddle</p>
+    <p class="gsub">Wellabe · Strategy &amp; Platform Enablement — private working site. Sign in with the credentials Matt shared with you personally.</p>
+    <form id="gate-form" novalidate>
+      <label for="gate-u">Username</label>
+      <input type="text" id="gate-u" autocomplete="username" autocapitalize="none" autofocus>
+      <label for="gate-p">Password</label>
+      <input type="password" id="gate-p" autocomplete="current-password">
+      <button type="submit" class="btn btn-primary" id="gate-btn">Sign in →</button>
+    </form>
+    <div id="gate-err"></div>
+    <p class="gate-note">Not case-sensitive. This site is personalized — what you see after signing in is written for you and your team. If you don't have credentials or they aren't working, contact Matt Johnson.</p>
+  </div>
+</div>
+
+<div id="app"></div>
+
+<script type="application/json" id="payloads">
+%%PAYLOADS%%
+</script>
+
+<script>
+%%AUTHJS%%
+</script>
+</body>
+</html>
