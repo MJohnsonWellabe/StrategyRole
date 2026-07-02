@@ -65,7 +65,7 @@
   }
 
   /* ---------- unlock flow ---------- */
-  function unlockWithKey(key, rec) {
+  function unlockWithKey(key, rec, manual) {
     var personal;
     return decrypt(key, rec.iv, rec.ct)
       .then(function (json) {
@@ -77,6 +77,10 @@
       })
       .then(function (commonJson) {
         var common = JSON.parse(commonJson);
+        if (manual) {
+          /* fresh sign-in always opens on Start Here */
+          try { history.replaceState(null, '', '#home'); } catch (e) { location.hash = 'home'; }
+        }
         render(common.src, personal);
         return crypto.subtle.exportKey('raw', key).then(function (raw) {
           try {
@@ -108,8 +112,8 @@
     }).join('\n');
 
     var heroSub = isAdmin
-      ? 'Admin view — every personalized panel on the site, exactly as each person sees it.'
-      : 'This page was written for you specifically — only you (and Matt, who wrote it) see this version. Your answers here save in your browser and flow into the same feedback compiler as the rest of the site.';
+      ? 'Admin view: every personalized panel on the site, exactly as each person sees it.'
+      : 'This page was written for you specifically. It is the part of the site that changes based on who signs in, and your answers here land in the same feedback compiler as the rest of the site.';
 
     var fyPage = document.createElement('div');
     fyPage.className = 'page';
@@ -165,10 +169,10 @@
       if (!rec) throw new Error('bad');
       rec._uh = uh;
       return deriveKey(u, p, rec.salt, payloads.kdf.iters).then(function (key) {
-        return unlockWithKey(key, rec);
+        return unlockWithKey(key, rec, true);
       });
     }).catch(function () {
-      err("That username and password combination didn't work. Credentials aren't case-sensitive — if you're stuck, contact Matt.");
+      err("That username and password combination didn't work. Credentials aren't case-sensitive. If you're stuck, contact Matt.");
     });
   });
 
